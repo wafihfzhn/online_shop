@@ -1,21 +1,25 @@
 <div class="container my-5">
   <div class="row">
     <div class="col-md-4">
+      <%= image_tag "no-pict.png", id: "image", class: 'img-product' %>
+      <div class="form-group form-file">
+        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+      </div>
     </div>
     <div class="col-md-8">
       <div class="form-group">
         <label>Name Product</label>
         <input class="form-control">
       </div>
-      <div class="form-group">
+      <div class="form-group pt-3">
         <label>Description</label>
         <input class="form-control">
       </div>
-      <div class="form-group">
+      <div class="form-group pt-3">
         <label>Price</label>
         <input class="form-control">
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary mt-3">Save</button>
     </div>
   </div>
 </div>
