@@ -13,6 +13,7 @@ gem 'jbuilder',                           '~> 2.7'
 gem 'bootsnap',                           '>= 1.4.2', require: false
 
 # Custom Gem
+gem 'shrine',                             '~> 2.19', '>= 2.19.3'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
