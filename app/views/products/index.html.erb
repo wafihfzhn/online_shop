@@ -1,4 +1,15 @@
-<% @products.each do |product| %>
-   <%= image_tag product.image_url || "no-pict.png" %>
-  <%= product.name %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-md-4">
+        <div class="card mt-5" style="width: 18rem;">
+          <%= image_tag product.image_url || "no-pict.png", class: 'card-img-top' %>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to product.name.titleize, product_path(product) %></h5>
+            <p class="card-text">Rp. <%= product.price %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
