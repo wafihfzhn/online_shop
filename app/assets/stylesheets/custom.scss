@@ -16,3 +16,23 @@
   height: 15em;
   object-fit: cover;
 }
+
+.img-product {
+  widows: 100%;
+}
+
+.product-value {
+  border: none;
+  text-align: center;
+  width: 10%;
+}
+
+.decrease-btn {
+  border-radius: 50%;
+  padding: 3px 11px 3px 11px;
+}
+
+.increase-btn {
+  border-radius: 50%;
+  padding: 3px 10px 3px 10px;
+}

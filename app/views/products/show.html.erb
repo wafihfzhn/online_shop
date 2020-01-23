@@ -1,0 +1,57 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag @product.image_url || "no-pict.png", class: 'img-product' %>
+    </div>
+    <div class="col-md-6">
+      <h3><%= @product.name %></h3>
+      <hr>
+      <h5>Rp. <%= @product.price %> / Unit</h5>
+      <div class="card w-100 mt-3" style="width: 18rem;">
+        <div class="card-body">
+          <h6 class="card-subtitle mb-2 text-muted">Description</h6>
+          <p class="card-text"><%= @product.description %></p>
+        </div>
+      </div>
+      <div class="qty mt-3 text-center">
+        <div class="checkout">
+          <button type="button" class="decrease-btn">-</button>  
+          <input type="text" class="product-value" value="1"> 
+          <button type="button" class="increase-btn">+</button>	  
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 text-center">
+      <h4>TOTAL</h4>
+      <h5 class="checkout">Total: <span id="total">Rp. <%= @product.price %></span></h5>
+      <hr>
+      <button type="button" class="btn btn-success w-100 mt-1 ">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  /*For total*/
+  $(document).ready(function() {
+    $(".checkout").on("input", ".product-value", function() {
+      var price = +$(".price").data("price");
+      var quantity = +$(this).val();
+      $("#total").text("Rp. " + <%= @product.price %> * quantity);
+    })
+
+    var $buttonPlus = $('.increase-btn');
+    var $buttonMin = $('.decrease-btn');
+    var $quantity = $('.product-value');
+    
+    /*For plus and minus buttons*/
+    $buttonPlus.click(function() {
+      $quantity.val(parseInt($quantity.val()) + 1).trigger('input');
+    });
+    
+    $buttonMin.click(function() {
+      $quantity.val(Math.max(parseInt($quantity.val()) - 1, 0)).trigger('input');
+    });
+  })
+</script>
