@@ -1,0 +1,4 @@
+<% @products.each do |product| %>
+   <%= image_tag product.image_url || "no-pict.png" %>
+  <%= product.name %>
+<% end %>

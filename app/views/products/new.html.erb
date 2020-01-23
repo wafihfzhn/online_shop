@@ -1,25 +1,37 @@
 <div class="container my-5">
-  <div class="row">
-    <div class="col-md-4">
-      <%= image_tag "no-pict.png", id: "image", class: 'img-product' %>
-      <div class="form-group form-file">
-        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+  <%= form_for(@product, url: { action: :create } ) do |f| %>
+    <div class="row">
+      <div class="col-md-4">
+        <%= image_tag "no-pict.png", id: "imageProduct", class: 'img-product' %>
+        <div class="form-group form-file">
+          <%= f.file_field :image, class: 'form-control-file', id: "productUploader" %>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="form-group">
+          <label>Name Product</label>
+          <%= f.text_field :name, class: 'form-control pt-2' %>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <%= f.text_area :description, class: 'form-control pt-2', rows: 5 %>
+        </div>
+        <div class="form-group">
+          <label>Price</label>
+          <%= f.number_field :price, class: 'form-control' %>
+        </div>
+        <%= f.submit 'Save Product', class: 'btn btn-primary' %>
       </div>
     </div>
-    <div class="col-md-8">
-      <div class="form-group">
-        <label>Name Product</label>
-        <input class="form-control">
-      </div>
-      <div class="form-group pt-3">
-        <label>Description</label>
-        <input class="form-control">
-      </div>
-      <div class="form-group pt-3">
-        <label>Price</label>
-        <input class="form-control">
-      </div>
-      <button type="submit" class="btn btn-primary mt-3">Save</button>
-    </div>
-  </div>
+  <% end%>
 </div>
+
+<script>
+  document.getElementById("productUploader").onchange = function () {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      document.getElementById("imageProduct").src = e.target.result;
+    };
+    reader.readAsDataURL(this.files[0]);
+  };
+</script>
